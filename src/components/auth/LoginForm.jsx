@@ -123,7 +123,7 @@ const LoginForm = ({}) => {
                 </button>
               </form>
               <p>
-                New to Notion? <Link href="/signup">Sign up</Link>
+              Lorem ipsum dolor <Link href="/signup">Sign up</Link>
               </p>
             </div>
           </section>

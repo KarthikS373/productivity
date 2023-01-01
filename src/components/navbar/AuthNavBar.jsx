@@ -19,7 +19,7 @@ const AuthNavbar = (props) => {
         <div className="inner">
           <div className="logo-wrapper">
             <Link href="/">
-              <img className="logo" src={window.logo} alt="Notion logo" />
+              <img className="logo" src={window.logo} alt="logo" />
             </Link>
           </div>
         </div>
