@@ -7,25 +7,24 @@ import AuthNavBar from "../navbar/AuthNavBar"
 import RenderErrors from "../utils/renderErrors"
 import { login, removeErrors } from "../../redux/actions/session/session.actions"
 
-const LoginForm = ({}) => {
+const SignUpForm = () => {
   const dispatch = useDispatch()
-  const dispatchLogin = (user) => dispatch(login(user))
+  //   const dispatchLogin = (user) => dispatch(login(user))
 
   const errors = useSelector((state) => state.errors?.session)
 
   const router = useRouter()
 
-  const emailRef = useRef()
-  const pwdRef = useRef()
-
   const [user, setUser] = useState({
+    firstName: null,
+    lastName: null,
     email: null,
     password: null,
   })
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatchLogin(user)
+    // dispatchLogin(user)
   }
 
   const handleChange = (e) => {
@@ -36,49 +35,12 @@ const LoginForm = ({}) => {
 
   const resetInputs = () => {
     setUser({
+      firstName: null,
+      lastName: null,
       email: null,
       password: null,
     })
   }
-
-  const loginDemo = (e) => {
-    e.preventDefault()
-    resetInputs()
-
-    const demo = { email: "test@test.com", password: "password" }
-
-    const demoEmail = demo.email.split("")
-    const demoPassword = demo.password.split("")
-    const time = 65
-
-    demoEmail.forEach((char, i) => {
-      setTimeout(() => {
-        let _email = emailRef.current.value
-        _email += char
-        setUser((prev) => {
-          return { ...prev, email: _email }
-        })
-      }, time * i)
-    })
-
-    demoPassword.forEach((char, i) => {
-      setTimeout(() => {
-        let _password = pwdRef.current.value
-        _password += char
-        setUser((prev) => {
-          return { ...prev, password: _password }
-        })
-      }, time * (i + demoEmail.length))
-    })
-
-    const submitDelay = time * (demoEmail.length + demoPassword.length)
-    setTimeout(() => dispatchLogin(demo), submitDelay)
-    // setTimeout(() => router.push("/"), submitDelay)
-  }
-
-  useEffect(() => {
-    dispatch(removeErrors())
-  }, [])
 
   return (
     <>
@@ -88,17 +50,40 @@ const LoginForm = ({}) => {
         <div className="auth-page-wrapper">
           <section className="auth-section-wrapper">
             <div className="auth-header-wrapper">
-              <h1 className="auth-title">Log in</h1>
+              <h1 className="auth-title">Sign up</h1>
             </div>
             <RenderErrors errors={errors} />
-
             <div className="form-wrapper">
               <form onSubmit={handleSubmit} className="auth-form">
                 <label>
-                  Email
+                  First name
                   <input
                     type="text"
-                    ref={emailRef}
+                    required
+                    value={user.firstName || ""}
+                    name="firstName"
+                    placeholder="Your first name"
+                    onChange={handleChange}
+                    id="first-name-input"
+                  />
+                </label>
+
+                <label>
+                  Last name
+                  <input
+                    type="text"
+                    required
+                    value={user.lastName || ""}
+                    name="lastName"
+                    placeholder="Your last name"
+                    onChange={handleChange}
+                    id="last-name-input"
+                  />
+                </label>
+                <label>
+                  Email
+                  <input
+                    type="email"
                     required
                     value={user.email || ""}
                     name="email"
@@ -107,12 +92,10 @@ const LoginForm = ({}) => {
                     id="email-input"
                   />
                 </label>
-                {errors?.email ? <p>{errors.email}</p> : ""}
                 <label>
                   Password
                   <input
                     type="password"
-                    ref={pwdRef}
                     required
                     value={user.password || ""}
                     name="password"
@@ -121,34 +104,27 @@ const LoginForm = ({}) => {
                     id="password-input"
                   />
                 </label>
+                <p className="input-subtext">Password needs to be six or more characters.</p>
                 <div className="spacer-8"></div>
                 <button className="auth-submit-primary" type="submit">
-                  Sign in
+                  Create a new account
                 </button>
               </form>
               <p>
-                Lorem ipsum dolor <Link href="/signup">Sign up</Link>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.{" "}
+                <Link href="/login">Log in</Link>
               </p>
             </div>
           </section>
           <div className="auth-section-divider"></div>
-
-          <section className="auth-section-wrapper" id="demo-login">
+          <section className="auth-section-wrapper">
             <div className="auth-header-wrapper">
-              <h2 className="auth-subtitle">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </h2>
+              <h2 className="auth-subtitle"></h2>
               <p className="auth-subtext">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, possimus similique
-                numquam voluptates sequi mollitia expedita ad perferendis? Laborum, fuga?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi asperiores
+                nesciunt exercitationem quae praesentium ratione voluptatibus nobis accusamus
+                provident itaque!
               </p>
-            </div>
-            <div className="form-wrapper">
-              <form onSubmit={loginDemo} className="auth-form">
-                <button className="auth-submit-demo" type="submit">
-                  Demo
-                </button>
-              </form>
             </div>
           </section>
         </div>
@@ -157,4 +133,4 @@ const LoginForm = ({}) => {
   )
 }
 
-export default LoginForm
+export default SignUpForm

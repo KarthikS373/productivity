@@ -1,4 +1,4 @@
-import * as APIUtil from "../../../utils/api/session.api"
+import * as SessionAPI from "../../../utils/api/session.api"
 import {
   LOGOUT_CURRENT_USER,
   RECEIVE_CURRENT_USER,
@@ -25,19 +25,16 @@ export const removeErrors = () => ({
 })
 
 export const signup = (user) => (dispatch) =>
-  APIUtil.signup(user).then(
-    (user) => dispatch(receiveCurrentUser(user)),
-    (errors) => dispatch(receiveErrors(errors.responseJSON))
-  )
+  SessionAPI.signup(user)
+    .then((user) => dispatch(receiveCurrentUser(user)))
+    .catch((errors) => dispatch(receiveErrors(errors.responseJSON)))
 
 export const login = (user) => (dispatch) =>
-  APIUtil.login(user).then(
-    (user) => dispatch(receiveCurrentUser(user)),
-    (errors) => dispatch(receiveErrors(errors.responseJSON))
-  )
+  SessionAPI.login(user)
+    .then((user) => dispatch(receiveCurrentUser(user)))
+    .catch((errors) => dispatch(receiveErrors(errors.responseJSON)))
 
 export const logout = () => (dispatch) =>
-  APIUtil.logout().then(
-    (user) => dispatch(logoutCurrentUser()),
-    (errors) => dispatch(receiveErrors(errors.responseJSON))
-  )
+  SessionAPI.logout()
+    .then((user) => dispatch(logoutCurrentUser()))
+    .catch((errors) => dispatch(receiveErrors(errors.responseJSON)))

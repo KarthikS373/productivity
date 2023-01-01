@@ -8,7 +8,7 @@ const AuthNavbar = ({}) => {
   const dispatch = useDispatch()
   const dispatchLogout = () => dispatch(logout())
 
-  const errors = useSelector((state) => state.entities?.users[state.session?.currentUserId])
+  const user = useSelector((state) => state.entities?.users[state.session?.currentUserId])
 
   return (
     <header className="header">
@@ -18,6 +18,7 @@ const AuthNavbar = ({}) => {
             <Link href="/">
               <img className="logo" src={window.logo} alt="logo" />
             </Link>
+            {user}
           </div>
         </div>
       </div>
