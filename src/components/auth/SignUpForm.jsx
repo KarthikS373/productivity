@@ -112,7 +112,7 @@ const SignUpForm = () => {
               </form>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.{" "}
-                <Link href="/login">Log in</Link>
+                <Link href="login">Log in</Link>
               </p>
             </div>
           </section>

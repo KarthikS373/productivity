@@ -1,5 +1,6 @@
 .auth-bg {
   background: #fffefc;
+  min-height: 100vh;
   padding: 48px 0;
   width: 100%;
 }
@@ -38,7 +39,7 @@
 .auth-title {
   line-height: 1;
   margin-bottom: 16px;
-
+  
   &.title-404 {
     margin-bottom: 48px;
   }
@@ -59,7 +60,7 @@
 .auth-form {
   margin: 16px auto;
   width: 100%;
-
+  
   .input-subtext {
     color: $medium-light-gray;
     font-size: 13px;

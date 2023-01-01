@@ -127,7 +127,7 @@ const LoginForm = ({}) => {
                 </button>
               </form>
               <p>
-                Lorem ipsum dolor <Link href="/signup">Sign up</Link>
+                Lorem ipsum dolor <Link href="signup">Sign up</Link>
               </p>
             </div>
           </section>
