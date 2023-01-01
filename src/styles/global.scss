@@ -1,0 +1,28 @@
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    background: black;
+    color: white;
+  }
+}
+
+//  Reset
+@import "./base/reset.scss";
+
+// Core
+@import "./base/fonts.scss";
+@import "./base/colors.scss";
+@import "./base/styles.scss";
+@import "./base/mixins.scss";
+
+// Components
+@import "./components/auth.scss";
+@import "./components/forms.scss";
+@import "./components/navbar.scss";
+@import "./components/editor/editor.scss";
+@import "./components/editor/sidebar.scss";
+@import "./components/page/page.scss";
+@import "./components/blocks/block.scss";
+@import "./components/menus/block-menus.scss";

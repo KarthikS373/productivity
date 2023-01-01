@@ -1,0 +1,22 @@
+#editor {
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  transition: 0.5s;
+  width: 100%;
+}
+
+.loader {
+  display: grid;
+  height: 100vh;
+  place-items: center;
+  position: relative;
+  width: 100vw;
+}
+
+.loader-text {
+  color: #c0c0c0;
+  font-size: 40px;
+  font-weight: 600;
+}

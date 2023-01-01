@@ -1,0 +1,21 @@
+.global-contain {
+  margin: 0 auto;
+}
+
+.user-content-wrapper {
+  max-width: 1024px;
+  margin: 48px auto;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a:focus {
+  box-shadow: #2eaadcb3 0px 0px 0px 1px inset, #2eaadc66 0px 0px 0px 2px;
+  border-radius: 3px;
+}
+
+a:active {
+  box-shadow: none;
+}
