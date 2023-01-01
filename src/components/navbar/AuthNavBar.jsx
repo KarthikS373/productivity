@@ -1,18 +1,15 @@
 import React from "react"
 import Link from "next/link"
-import { connect } from "react-redux"
+import { connect, useDispatch, useSelector } from "react-redux"
 
 import { logout } from "../../redux/actions/session/session.actions"
 
-const mapStateToProps = (state) => ({
-  currentUser: state.entities?.users[state.session?.currentUserId],
-})
+const AuthNavbar = ({}) => {
+  const dispatch = useDispatch()
+  const dispatchLogout = () => dispatch(logout())
 
-const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logout()),
-})
+  const errors = useSelector((state) => state.entities?.users[state.session?.currentUserId])
 
-const AuthNavbar = (props) => {
   return (
     <header className="header">
       <div className="outer">
@@ -28,6 +25,4 @@ const AuthNavbar = (props) => {
   )
 }
 
-const wrapper = connect(mapStateToProps, mapDispatchToProps)(AuthNavbar)
-
-export default wrapper
+export default AuthNavbar
