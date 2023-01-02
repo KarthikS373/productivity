@@ -7,6 +7,7 @@ import { useRouter } from "next/router"
 import Outliner from "./Outliner"
 import { logout } from "../../redux/actions/session/session.actions"
 import { createBlock } from "../../redux/actions/block/block.actions"
+import { createPage } from "../../redux/actions/page/page.actions"
 
 const SideBar = ({ pages, isSidebarOpen, toggleSidebar }) => {
   const router = useRouter()
